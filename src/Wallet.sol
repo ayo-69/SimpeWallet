@@ -10,13 +10,13 @@ contract Wallet {
         require(msg.sender == owner, "Only the owner can call this function");
         _;
     }
-    
+
     //Events
     event ContractCreated(address indexed owner, uint256 timestamp);
     event DepositMade(address indexed sender, uint256 amount, uint256 timestamp);
     event WithdrawMade(address indexed owner, uint256 amount, uint256 timestamp);
 
-    constructor (address _owner) {
+    constructor(address _owner) {
         require(_owner != address(0), "Owner cannot be the zero address");
         owner = _owner;
         emit ContractCreated(owner, block.timestamp);

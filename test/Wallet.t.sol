@@ -4,12 +4,10 @@ pragma solidity ^0.8.20;
 import "forge-std/Test.sol";
 import "../src/Wallet.sol";
 
-
 contract WalletTest is Test {
     Wallet public wallet;
     address public owner = address(0x123);
     address public user = address(0x456);
-
 
     function setUp() public {
         wallet = new Wallet(owner);
@@ -30,7 +28,7 @@ contract WalletTest is Test {
         vm.deal(owner, 10 ether);
         vm.startPrank(owner);
         // Deposit amount to wallet
-        wallet.deposit{ value: 10 ether }();
+        wallet.deposit{value: 10 ether}();
 
         // Makes sure the money was received
         assertEq(wallet._balance(), 10 ether, "Invalid wallet balance during deposit");
